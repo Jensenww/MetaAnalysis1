@@ -17,5 +17,21 @@ result['GDP_per_capita_USD'] = result['gdp_per_capital'] * result['exchange_rate
 
 selected_columns = result[['country_region','GDP','gdp_per_capital','currency code','GDP_USD','GDP_per_capita_USD']]
 print(selected_columns)
+#Top5 GDP Countries
+selected_columns_GDP = selected_columns.sort_values(by='GDP_USD', ascending=False)
+#Top 5 hdi county order by
+selected_columns_HDI = result.sort_values(by='hdi', ascending=False)
+
+print(selected_columns)
+print(selected_columns_HDI)
+
+for country in result['country_region']:
+    if (result['GDP_per_capita_USD'] < result['GDP_per_capita_USD'].mean()).all():
+        print("Countries had less than average GDP per Capita are", country)
+    else :
+        (result['GDP_per_capita_USD'] > result['GDP_per_capita_USD'].mean()).all()
+        print("Countries had more than average GDP per Capita are", country)
+
+
 
 
